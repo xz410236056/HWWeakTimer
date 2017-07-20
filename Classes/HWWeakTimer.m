@@ -68,6 +68,7 @@
 }
 
 + (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)interval
+                                     target:(id)aTarget
                                       block:(HWTimerHandler)block
                                    userInfo:(id)userInfo
                                     repeats:(BOOL)repeats {
@@ -76,7 +77,7 @@
         [userInfoArray addObject:userInfo];
     }
     return [self scheduledTimerWithTimeInterval:interval
-                                         target:self
+                                         target:aTarget
                                        selector:@selector(_timerBlockInvoke:)
                                        userInfo:[userInfoArray copy]
                                         repeats:repeats];
